@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const SidebarContainer = styled.nav`
   width: 200px;
@@ -18,7 +19,7 @@ const SidebarItem = styled.li`
   margin-bottom: 15px;
 `;
 
-const SidebarLink = styled.a`
+const SidebarLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -34,10 +35,10 @@ const Sidebar = () => {
     <SidebarContainer>
       <SidebarList>
         <SidebarItem>
-          <SidebarLink href="#">Cadastro de Pontos de Recarga</SidebarLink>
+          <SidebarLink to="/cadastro-pontos">Cadastro de Pontos de Recarga</SidebarLink>
         </SidebarItem>
         <SidebarItem>
-          <SidebarLink href="#">Logoff</SidebarLink>
+          <SidebarLink to="/">Logoff</SidebarLink>
         </SidebarItem>
       </SidebarList>
     </SidebarContainer>

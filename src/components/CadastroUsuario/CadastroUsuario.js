@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -69,6 +70,7 @@ const ErrorMessage = styled.span`
 const CadastroUsuario = () => {
   const [tipoCadastro, setTipoCadastro] = useState('');
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const mostrarCampos = () => {
     // Lógica para mostrar campos dependendo do tipo de cadastro
@@ -77,6 +79,7 @@ const CadastroUsuario = () => {
   const validarFormulario = (e) => {
     e.preventDefault();
     // Lógica de validação do formulário
+    navigate('/dashboard');
   };
 
   return (
@@ -160,7 +163,7 @@ const CadastroUsuario = () => {
         <Button type="submit">Cadastrar</Button>
       </form>
       <Paragraph>
-        Já tem uma conta? <a href="#">Faça login</a>
+        Já tem uma conta? <a href="/">Faça login</a>
       </Paragraph>
     </Container>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -54,10 +55,17 @@ const Button = styled.button`
 `;
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/dashboard');
+  };
+
   return (
     <Container>
       <Title>Login</Title>
-      <form action="#" method="POST" id="login-form">
+      <form action="#" method="POST" id="login-form" onSubmit={handleSubmit}>
         <InputGroup>
           <Label htmlFor="email">Email</Label>
           <Input type="email" id="email" name="email" required />
@@ -69,7 +77,7 @@ const LoginForm = () => {
         <Button type="submit">Entrar</Button>
       </form>
       <Paragraph>
-        Não tem uma conta? <a href="#">Cadastre-se</a>
+        Não tem uma conta? <a href="/cadastro-usuario">Cadastre-se</a>
       </Paragraph>
     </Container>
   );

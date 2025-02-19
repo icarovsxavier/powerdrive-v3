@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -7,7 +8,6 @@ import CadastroUsuario from './components/CadastroUsuario/CadastroUsuario';
 import GlobalStyles from './components/Styles/GlobalStyles';
 import CadastroPontos from './components/CadastroPontos/CadastroPontos';
 import Sidebar from './components/Sidebar/Sidebar';
-
 
 const AppContainer = styled.div`
   display: flex;
@@ -20,25 +20,25 @@ const DashboardContainer = styled.div`
   flex-grow: 1;
 `;
 
+const Dashboard = () => (
+  <DashboardContainer>
+    <Sidebar />
+    <CadastroPontos />
+  </DashboardContainer>
+);
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
-
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-  };
-
   return (
     <>
       <GlobalStyles />
       <AppContainer>
         <Header />
-        {/* <LoginForm /> */}
-        {/* <CadastroUsuario /> */}
-        <DashboardContainer>
-          <Sidebar />
-          <CadastroPontos />
-        </DashboardContainer>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/cadastro-usuario" element={<CadastroUsuario />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/cadastro-pontos" element={<Dashboard />} />
+        </Routes>
         <Footer />
       </AppContainer>
     </>
